@@ -129,6 +129,8 @@ export const hi: typeof kn = {
       adherenceAlertDesc: "भोजन के बाद का माप दर्ज हुआ है, लेकिन शाम की Atorvastatin 10mg बाकी है।",
       markTakenBtn: "दवा ले ली",
       allTaken: "आज की सभी दवाएं पूरी (3/3)",
+      runningLow: "दवा खत्म हो रही है (Running low)",
+      findNearbyPharmacy: "नजदीकी फार्मेसी खोजें (Find nearby pharmacy)",
     },
     followUp: {
       title: "अगली मुलाक़ात (Next Follow-up)",
@@ -269,5 +271,22 @@ export const hi: typeof kn = {
     teleconsultBtn: "टेली-परामर्श शुरू करें",
     noPatientsFound: "कोई मरीज नहीं मिला",
     backToPatient: "मरीज डैशबोर्ड पर वापस जाएँ",
+  },
+
+  pharmacyFinder: {
+    title: "Find a pharmacy",
+    subtitle: "Find a nearby pharmacy to refill your medication.",
+    usingDemoLocation: "Using demo location",
+    medicationNeeded: "Medication needed",
+    choosePharmacy: "Choose a nearby pharmacy to continue.",
+    viewOnGoogleMaps: "View on Google Maps",
+    demoDataTag: "Demo pharmacy data",
+    simulatedNote: "Distances and hours are simulated.",
+    openNow: "Open now",
+    close: "बंद करें",
+    chatLowTabletUser: "मेरी दवाइयाँ खत्म हो रही हैं",
+    chatLowTabletAssistant: "मैंने दर्ज कर लिया है कि आपकी दवा कम हो रही है। क्या आप नजदीकी फार्मेसी खोजना चाहते हैं?",
+    findPharmacyAction: "फार्मेसी खोजें",
+    notNowAction: "अभी नहीं",
   }
 };

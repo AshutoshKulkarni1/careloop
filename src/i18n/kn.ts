@@ -138,6 +138,8 @@ export const kn = {
       adherenceAlertDesc: "ಊಟದ ನಂತರದ ಸಕ್ಕರೆ ದಾಖಲಾಗಿದೆ, ಆದರೆ ಸಂಜೆಯ ಅಟೋರ್ವಾಸ್ಟಾಟಿನ್ 10mg ಬಾಕಿ ಇದೆ.",
       markTakenBtn: "ಮಾತ್ರೆ ತೆಗೆದುಕೊಂಡಿದ್ದೇನೆ",
       allTaken: "ಇಂದಿನ ಎಲ್ಲಾ ಔಷಧಗಳು ಪೂರ್ಣಗೊಂಡಿವೆ (3/3)",
+      runningLow: "ಮುಗಿಯುತ್ತಾ ಬಂದಿದೆ (Running low)",
+      findNearbyPharmacy: "ಹತ್ತಿರದ ಫಾರ್ಮಸಿ ಹುಡುಕಿ (Find nearby pharmacy)",
     },
     followUp: {
       title: "ಮುಂದಿನ ಭೇಟಿ (Next Follow-up)",
@@ -283,5 +285,23 @@ export const kn = {
     teleconsultBtn: "ಟೆಲಿ-ಸಮಾಲೋಚನೆ ಪ್ರಾರಂಭಿಸಿ",
     noPatientsFound: "ಯಾವುದೇ ರೋಗಿಗಳು ಕಂಡುಬಂದಿಲ್ಲ",
     backToPatient: "ರೋಗಿಯ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗೆ ಹಿಂತಿರುಗಿ",
+  },
+
+  // Pharmacy Finder
+  pharmacyFinder: {
+    title: "Find a pharmacy",
+    subtitle: "Find a nearby pharmacy to refill your medication.",
+    usingDemoLocation: "Using demo location",
+    medicationNeeded: "Medication needed",
+    choosePharmacy: "Choose a nearby pharmacy to continue.",
+    viewOnGoogleMaps: "View on Google Maps",
+    demoDataTag: "Demo pharmacy data",
+    simulatedNote: "Distances and hours are simulated.",
+    openNow: "Open now",
+    close: "ಮುಚ್ಚಿ",
+    chatLowTabletUser: "ನನ್ನ ಮಾತ್ರೆಗಳು ಮುಗಿದಿವೆ",
+    chatLowTabletAssistant: "ನಿಮ್ಮ ಔಷಧಿ ಮುಗಿದಿರುವುದಾಗಿ ದಾಖಲಿಸಿದ್ದೇನೆ. ನಿಮ್ಮ ಹತ್ತಿರದ ಫಾರ್ಮಸಿ ಹುಡುಕಬೇಕೇ?",
+    findPharmacyAction: "ಫಾರ್ಮಸಿ ಹುಡುಕಿ",
+    notNowAction: "ಈಗ ಬೇಡ",
   }
 };

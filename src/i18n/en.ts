@@ -129,6 +129,8 @@ export const en: typeof kn = {
       adherenceAlertDesc: "Post-meal reading recorded, but evening Atorvastatin 10mg tablet is pending.",
       markTakenBtn: "Mark as Taken",
       allTaken: "All daily tablets completed (3/3)",
+      runningLow: "Running low",
+      findNearbyPharmacy: "Find nearby pharmacy",
     },
     followUp: {
       title: "Next Follow-up",
@@ -269,5 +271,22 @@ export const en: typeof kn = {
     teleconsultBtn: "Start Tele-Consultation",
     noPatientsFound: "No matching patients found",
     backToPatient: "Back to Patient Dashboard",
+  },
+
+  pharmacyFinder: {
+    title: "Find a pharmacy",
+    subtitle: "Find a nearby pharmacy to refill your medication.",
+    usingDemoLocation: "Using demo location",
+    medicationNeeded: "Medication needed",
+    choosePharmacy: "Choose a nearby pharmacy to continue.",
+    viewOnGoogleMaps: "View on Google Maps",
+    demoDataTag: "Demo pharmacy data",
+    simulatedNote: "Distances and hours are simulated.",
+    openNow: "Open now",
+    close: "Close",
+    chatLowTabletUser: "My tablets are running low",
+    chatLowTabletAssistant: "Noted that your medication is running low. Would you like to find a nearby pharmacy?",
+    findPharmacyAction: "Find Pharmacy",
+    notNowAction: "Not now",
   }
 };

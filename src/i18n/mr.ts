@@ -129,6 +129,8 @@ export const mr: typeof kn = {
       adherenceAlertDesc: "जेवणानंतरची शुगर नोंदवली गेली आहे, परंतु संध्याकाळची अटोर्वास्टॅटिन 10mg गोळी अजून बाकी आहे.",
       markTakenBtn: "गोळी घेतली",
       allTaken: "आजची सर्व औषधे वेळेवर पूर्ण",
+      runningLow: "संपत आली आहे (Running low)",
+      findNearbyPharmacy: "जवळची फार्मसी शोधा (Find nearby pharmacy)",
     },
     followUp: {
       title: "पुढील भेट (Next Follow-up)",
@@ -269,5 +271,22 @@ export const mr: typeof kn = {
     teleconsultBtn: "टेलि-सल्लामसलत सुरू करा",
     noPatientsFound: "कोणताही रुग्ण सापडला नाही",
     backToPatient: "रुग्ण डॅशबोर्डवर परत जा",
+  },
+
+  pharmacyFinder: {
+    title: "Find a pharmacy",
+    subtitle: "Find a nearby pharmacy to refill your medication.",
+    usingDemoLocation: "Using demo location",
+    medicationNeeded: "Medication needed",
+    choosePharmacy: "Choose a nearby pharmacy to continue.",
+    viewOnGoogleMaps: "View on Google Maps",
+    demoDataTag: "Demo pharmacy data",
+    simulatedNote: "Distances and hours are simulated.",
+    openNow: "Open now",
+    close: "बंद करा",
+    chatLowTabletUser: "माझी औषधे संपली आहेत",
+    chatLowTabletAssistant: "तुमची औषधे संपल्याची नोंद केली आहे. जवळची फार्मसी शोधायची का?",
+    findPharmacyAction: "फार्मसी शोधा",
+    notNowAction: "आता नको",
   }
 };

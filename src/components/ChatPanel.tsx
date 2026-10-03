@@ -9,6 +9,8 @@ interface ChatPanelProps {
   language: SupportedLanguage;
   onConfirmFromChat?: () => void;
   isConfirmationActive?: boolean;
+  onOpenPharmacyFinder?: (medicationName: string) => void;
+  onDismissPharmacyAction?: () => void;
 }
 
 export const ChatPanel: React.FC<ChatPanelProps> = ({
@@ -16,6 +18,8 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
   language,
   onConfirmFromChat,
   isConfirmationActive = false,
+  onOpenPharmacyFinder,
+  onDismissPharmacyAction,
 }) => {
   const t = getTranslation(language);
 
@@ -100,6 +104,30 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
                         className="px-2.5 py-1 rounded bg-[#0F5C54] hover:bg-[#0B4640] text-white text-[11px] font-medium transition-colors"
                       >
                         {t.voice.saveConfirmBtn}
+                      </button>
+                    )}
+                  </div>
+                )}
+
+                {/* If message represents low tablet pharmacy action */}
+                {msg.type === 'pharmacyAction' && (
+                  <div className="mt-2.5 pt-2 border-t border-[#E4E2DC] flex items-center gap-2">
+                    {onOpenPharmacyFinder && (
+                      <button
+                        type="button"
+                        onClick={() => onOpenPharmacyFinder('Metformin')}
+                        className="px-2.5 py-1 rounded bg-[#0F5C54] hover:bg-[#0B4640] text-white text-[11px] font-semibold transition-colors shadow-xs"
+                      >
+                        {t.pharmacyFinder.findPharmacyAction}
+                      </button>
+                    )}
+                    {onDismissPharmacyAction && (
+                      <button
+                        type="button"
+                        onClick={onDismissPharmacyAction}
+                        className="px-2.5 py-1 rounded bg-white hover:bg-[#EFECE6] text-[#5C6966] border border-[#E4E2DC] text-[11px] font-medium transition-colors"
+                      >
+                        {t.pharmacyFinder.notNowAction}
                       </button>
                     )}
                   </div>

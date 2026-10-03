@@ -1,13 +1,14 @@
 import React from 'react';
 import type { SupportedLanguage } from '../../services/healthService';
 import { getTranslation } from '../../i18n';
-import { Pill, Check, Clock, AlertCircle } from 'lucide-react';
+import { Pill, Check, Clock, AlertCircle, MapPin } from 'lucide-react';
 
 interface MedicationsModuleProps {
   language: SupportedLanguage;
   isEveningTaken?: boolean;
   onMarkEveningTaken?: () => void;
   isPostMealReadingLogged?: boolean;
+  onOpenPharmacyFinder?: (medicationName: string) => void;
 }
 
 export const MedicationsModule: React.FC<MedicationsModuleProps> = ({
@@ -15,18 +16,20 @@ export const MedicationsModule: React.FC<MedicationsModuleProps> = ({
   isEveningTaken = false,
   onMarkEveningTaken,
   isPostMealReadingLogged = false,
+  onOpenPharmacyFinder,
 }) => {
   const t = getTranslation(language);
   const m = t.modules.medications;
 
   const schedules = [
-    { time: m.morning, name: m.med1, status: 'taken', timeStr: '08:00 AM' },
-    { time: m.afternoon, name: m.med2, status: 'taken', timeStr: '01:30 PM' },
+    { time: m.morning, name: m.med1, status: 'taken', timeStr: '08:00 AM', isRunningLow: true },
+    { time: m.afternoon, name: m.med2, status: 'taken', timeStr: '01:30 PM', isRunningLow: false },
     {
       time: m.evening,
       name: m.med3,
       status: isEveningTaken ? 'taken' : 'pending',
       timeStr: isEveningTaken ? 'Just now' : '08:00 PM',
+      isRunningLow: false,
     },
   ];
 
@@ -73,7 +76,15 @@ export const MedicationsModule: React.FC<MedicationsModuleProps> = ({
                   )}
                 </span>
                 <div>
-                  <div className="font-medium text-[#14211F]">{med.name}</div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-medium text-[#14211F]">{med.name}</span>
+                    {med.isRunningLow && (
+                      <span className="inline-flex items-center gap-0.5 text-[9px] text-[#8A6F3E] bg-[#FAF7F2] border border-[#8A6F3E]/30 px-1.5 py-0.5 rounded font-medium">
+                        <AlertCircle className="w-2.5 h-2.5 text-[#8A6F3E]" />
+                        <span>{m.runningLow}</span>
+                      </span>
+                    )}
+                  </div>
                   <div className="text-[10px] text-[#5C6966]">{med.time} • {med.timeStr}</div>
                 </div>
               </div>
@@ -91,6 +102,16 @@ export const MedicationsModule: React.FC<MedicationsModuleProps> = ({
           );
         })}
       </div>
+
+      {/* Find nearby pharmacy button */}
+      <button
+        type="button"
+        onClick={() => onOpenPharmacyFinder ? onOpenPharmacyFinder('Metformin') : undefined}
+        className="mt-3 w-full inline-flex items-center justify-center gap-1.5 min-h-[36px] px-3 py-2 rounded-lg bg-[#F7F6F3] hover:bg-[#EFECE6] text-[#0F5C54] border border-[#E4E2DC] text-xs font-semibold transition-all shadow-subtle focus:outline-none focus:ring-2 focus:ring-[#0F5C54]/30"
+      >
+        <MapPin className="w-3.5 h-3.5 text-[#0F5C54]" strokeWidth={1.5} />
+        <span>{m.findNearbyPharmacy}</span>
+      </button>
 
       {/* Medication Adherence Check: Post-meal Reading Alert */}
       {!isEveningTaken && isPostMealReadingLogged && (

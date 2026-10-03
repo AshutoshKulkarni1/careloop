@@ -16,7 +16,7 @@ export interface ChatMessage {
   text: string;
   subtext?: string;
   timestamp: string;
-  type?: 'text' | 'card' | 'action';
+  type?: 'text' | 'card' | 'action' | 'pharmacyAction';
   readingData?: HealthReading;
 }
 

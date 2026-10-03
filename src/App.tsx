@@ -23,12 +23,20 @@ import { SideEffectsModule } from './components/modules/SideEffectsModule';
 import { LifestyleModule } from './components/modules/LifestyleModule';
 import { HealthSummaryModule } from './components/modules/HealthSummaryModule';
 import { DevicesModule } from './components/modules/DevicesModule';
+import { PharmacyFinderModal } from './components/PharmacyFinderModal';
 
 import { CheckCircle2 } from 'lucide-react';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<NavTabId>('dashboard');
   const [localToast, setLocalToast] = useState<string | null>(null);
+  const [isPharmacyFinderOpen, setIsPharmacyFinderOpen] = useState<boolean>(false);
+  const [selectedPharmacyMedication, setSelectedPharmacyMedication] = useState<string>('Metformin');
+
+  const handleOpenPharmacyFinder = (medication: string = 'Metformin') => {
+    setSelectedPharmacyMedication(medication || 'Metformin');
+    setIsPharmacyFinderOpen(true);
+  };
 
   const {
     state,
@@ -132,6 +140,7 @@ export function App() {
                     language={language}
                     onConfirmFromChat={handleConfirmSave}
                     isConfirmationActive={state === 'CONFIRMATION'}
+                    onOpenPharmacyFinder={handleOpenPharmacyFinder}
                   />
                 </div>
               </div>
@@ -195,6 +204,7 @@ export function App() {
                     isEveningTaken={isEveningMedTaken}
                     onMarkEveningTaken={markEveningMedTaken}
                     isPostMealReadingLogged={Boolean(todayGlucose || todayBp)}
+                    onOpenPharmacyFinder={handleOpenPharmacyFinder}
                   />
                   <FollowUpModule language={language} />
                   <SideEffectsModule language={language} onToast={showLocalToast} />
@@ -261,6 +271,14 @@ export function App() {
         onReplayConfirmation={replayConfirmation}
         isMutedVoice={isMutedVoice}
         onToggleMuteVoice={toggleMuteVoice}
+      />
+
+      {/* Find a Pharmacy Modal */}
+      <PharmacyFinderModal
+        isOpen={isPharmacyFinderOpen}
+        onClose={() => setIsPharmacyFinderOpen(false)}
+        language={language}
+        selectedMedication={selectedPharmacyMedication}
       />
     </div>
   );
