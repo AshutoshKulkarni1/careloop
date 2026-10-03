@@ -9,11 +9,13 @@ import {
   Calendar,
   FileBarChart,
   User,
+  Stethoscope,
 } from 'lucide-react';
 
 export type NavTabId =
   | 'dashboard'
   | 'healthLogs'
+  | 'doctorPortal'
   | 'insights'
   | 'medications'
   | 'appointments'
@@ -36,6 +38,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const navItems: { id: NavTabId; label: string; icon: React.ComponentType<any> }[] = [
     { id: 'dashboard', label: t.nav.dashboard, icon: LayoutDashboard },
     { id: 'healthLogs', label: t.nav.healthLogs, icon: ClipboardList },
+    { id: 'doctorPortal', label: t.nav.doctorPortal, icon: Stethoscope },
     { id: 'insights', label: t.nav.insights, icon: LineChart },
     { id: 'medications', label: t.nav.medications, icon: Pill },
     { id: 'appointments', label: t.nav.appointments, icon: Calendar },
@@ -99,15 +102,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {/* Bottom user status */}
         <div className="p-4 border-t border-[#E4E2DC] bg-[#FAF9F7]">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-[#E4E2DC] flex items-center justify-center text-xs font-semibold text-[#14211F]">
-              P1
+            <div
+              className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold ${
+                activeTab === 'doctorPortal'
+                  ? 'bg-[#0F5C54] text-white'
+                  : 'bg-[#E4E2DC] text-[#14211F]'
+              }`}
+            >
+              {activeTab === 'doctorPortal' ? 'DR' : 'P1'}
             </div>
             <div className="overflow-hidden">
               <div className="text-xs font-semibold text-[#14211F] truncate">
-                Patient Demo
+                {activeTab === 'doctorPortal' ? 'Dr. Ananya Rao' : 'Patient Demo'}
               </div>
               <div className="text-[10px] text-[#5C6966] truncate">
-                ID: #CL-88204
+                {activeTab === 'doctorPortal' ? 'Reg: #KMC-74892' : 'ID: #CL-88204'}
               </div>
             </div>
           </div>

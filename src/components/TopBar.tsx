@@ -1,7 +1,7 @@
-import React from 'react';
 import type { SupportedLanguage } from '../services/healthService';
 import { getTranslation } from '../i18n';
-import { RotateCcw, Globe, Volume2, VolumeX } from 'lucide-react';
+import type { NavTabId } from './Sidebar';
+import { RotateCcw, Globe, Volume2, VolumeX, Stethoscope, User } from 'lucide-react';
 
 interface TopBarProps {
   language: SupportedLanguage;
@@ -9,6 +9,8 @@ interface TopBarProps {
   onResetDemo: () => void;
   isMutedVoice?: boolean;
   onToggleMuteVoice?: () => void;
+  activeTab?: NavTabId;
+  onSelectTab?: (tab: NavTabId) => void;
 }
 
 export const TopBar: React.FC<TopBarProps> = ({
@@ -17,6 +19,8 @@ export const TopBar: React.FC<TopBarProps> = ({
   onResetDemo,
   isMutedVoice = false,
   onToggleMuteVoice,
+  activeTab = 'dashboard',
+  onSelectTab,
 }) => {
   const t = getTranslation(language);
 
@@ -85,6 +89,31 @@ export const TopBar: React.FC<TopBarProps> = ({
             <span className="hidden sm:inline">
               {isMutedVoice ? 'Voice Off' : 'Voice On'}
             </span>
+          </button>
+        )}
+
+        {/* Clinician Portal / Patient View Switcher */}
+        {onSelectTab && (
+          <button
+            type="button"
+            onClick={() => onSelectTab(activeTab === 'doctorPortal' ? 'dashboard' : 'doctorPortal')}
+            className={`inline-flex items-center gap-1.5 h-8 px-3 rounded-lg border text-xs font-semibold transition-all shadow-subtle ${
+              activeTab === 'doctorPortal'
+                ? 'bg-[#0F5C54] text-white border-[#0F5C54] hover:bg-[#0B4640]'
+                : 'bg-white text-[#0F5C54] border-[#0F5C54]/30 hover:bg-[#E8F1EF]'
+            }`}
+          >
+            {activeTab === 'doctorPortal' ? (
+              <>
+                <User className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">{t.doctor.rolePatient}</span>
+              </>
+            ) : (
+              <>
+                <Stethoscope className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">{t.doctor.roleDoctor}</span>
+              </>
+            )}
           </button>
         )}
 

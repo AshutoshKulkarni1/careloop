@@ -14,6 +14,7 @@ import { FooterBanner } from './components/FooterBanner';
 import { PlaceholderPage } from './components/PlaceholderPage';
 import { LiveMonitoringSection } from './components/LiveMonitoringSection';
 import { WeeklyHealthLog } from './components/WeeklyHealthLog';
+import { DoctorDashboard } from './components/DoctorDashboard';
 
 // Secondary modules
 import { MedicationsModule } from './components/modules/MedicationsModule';
@@ -106,6 +107,8 @@ export function App() {
           onResetDemo={resetDemo}
           isMutedVoice={isMutedVoice}
           onToggleMuteVoice={toggleMuteVoice}
+          activeTab={activeTab}
+          onSelectTab={setActiveTab}
         />
 
         {/* Dynamic page content */}
@@ -207,6 +210,15 @@ export function App() {
                 </div>
               </section>
             </>
+          ) : activeTab === 'doctorPortal' ? (
+            <DoctorDashboard
+              language={language}
+              onBackToPatient={() => setActiveTab('dashboard')}
+              onToast={showLocalToast}
+              currentGlucoseReading={todayGlucose}
+              currentBpReading={todayBp}
+              isEveningMedTaken={isEveningMedTaken}
+            />
           ) : activeTab === 'healthLogs' ? (
             <WeeklyHealthLog
               language={language}
